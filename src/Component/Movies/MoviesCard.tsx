@@ -15,7 +15,7 @@ export default function MoviesCard({id, title, poster, release} : MoviesCardProp
     <div>
       <Link to={`moviesDetails/${id}`}>
      <p>{title}</p>
-    <img src={poster} alt="movie poster"/>
+    <img src={`https://image.tmdb.org/t/p/w300/${poster}`} alt="movie poster"/>
     <p>{release}</p>
     </Link>
     </div>

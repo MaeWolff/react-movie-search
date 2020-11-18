@@ -11,11 +11,11 @@ export default function LoginPage() {
     history.push("/home");
   }
 
-  useEffect(() => {
-    if (localStorage.getItem("username").length > 1) {
-      history.push("/home");
-    }
-  }, [history]);
+  //   useEffect(() => {
+  //     if (localStorage.getItem("username").length > 1) {
+  //       history.push("/home");
+  //     }
+  //   }, [history]);
 
   return (
     <div>

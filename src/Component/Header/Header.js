@@ -2,6 +2,7 @@ import React from 'react'
 import { Link, NavLink } from 'react-router-dom'
 
 const Header = () => {
+    const username = localStorage.getItem("username")
     return (
         <div>
             <div>
@@ -22,8 +23,8 @@ const Header = () => {
                 </NavLink>
             </div>
             <div>
-                <span>{localStorage.getItem("username")}</span>
-                <span>{localStorage.getItem("username").substr(0, 1)}</span>
+                <span>{username}</span>
+                <span>{username.substr(0, 1)}</span>
             </div>
         </div>
     )

@@ -19,9 +19,11 @@ const Button = styled.button<ButtonProps>`
   border-radius: 0.5em;
   transition: all 0.2s ease 0s;
   min-height: fit-content;
-  border: 1px solid red;
-  background-color: ${(props) => (props.secondary ? `transparent` : `red`)};
-  color: ${(props) => (props.secondary ? `red` : `white`)};
+  border: 1px solid ${(props) => props.theme.colors.primary};
+  background-color: ${(props) =>
+    props.secondary ? `transparent` : `${props.theme.colors.primary}`};
+  color: ${(props) =>
+    props.secondary ? `${props.theme.colors.primary}` : `white`};
   &:focus {
     outline: none;
   }

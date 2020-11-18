@@ -1,5 +1,10 @@
 import React from "react";
+import Header from "../Component/Header/Header";
 
 export default function HomePage() {
-  return <div>HOME TAS CAPTEjd dhqlshksqjh</div>;
+  return (
+  <div>
+     <Header/>
+  </div>
+  )
 }

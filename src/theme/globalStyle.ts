@@ -38,6 +38,8 @@ body{
   width: 100%;
   min-height: 100vh;
   font-family: sans-serif;
+  background-color: ${(props) => props.theme.colors.black};
+  color: ${(props) => props.theme.colors.white};
 }
 
 `;

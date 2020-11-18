@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import { MoviesList } from "../Component/index";
 import PageLayout from "../Layout/PageLayout";
 import device from "../theme/device";
 import { InputComponent } from "../Component/index";

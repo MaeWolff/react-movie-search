@@ -1,22 +1,22 @@
 import "./App.css";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
+import LoginPage from "./pages/LoginPage";
 import HomePage from "./pages/HomePage";
 import MovieDetailsPage from "./pages/MovieDetailsPage";
-import LoginPage from "./pages/LoginPage";
 
 function App() {
   return (
     <div className="App">
       <Router>
         <Switch>
-          <Route path="/">
+          <Route exact path="/">
             <LoginPage />
           </Route>
-          <Route path="/home">
+          <Route exact path="/home">
             <HomePage />
           </Route>
-          <Route path="/movieDetails">
+          <Route exact path="/movieDetails">
             <MovieDetailsPage />
           </Route>
         </Switch>

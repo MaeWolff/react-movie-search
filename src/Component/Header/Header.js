@@ -7,13 +7,23 @@ const Header = () => {
             <div>
                 <Link to='/home'>Mammy Searching</Link>
             </div>
-            <NavLink>
-                <Link to='/'>
-                </Link>
-            </NavLink>
+            <div>
+                <NavLink to='/'>
+                    Accueil
+                </NavLink>
+                <NavLink to='/'>
+                    film
+                </NavLink>
+                <NavLink to='/'>
+                    Nouveautés
+                </NavLink>
+                <NavLink to='/'>
+                    Ma Liste
+                </NavLink>
+            </div>
             <div>
                 <span>{localStorage.getItem("username")}</span>
-                <span>{localStorage.getItem("username").str.substr(0, 1)}</span>
+                <span>{localStorage.getItem("username").substr(0, 1)}</span>
             </div>
         </div>
     )

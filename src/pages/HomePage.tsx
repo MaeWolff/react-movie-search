@@ -40,8 +40,6 @@ export default function HomePage() {
       .catch(error => console.log(error))
   },[search]);
 
-  console.log(dataMovies);
-
   const renderMovies = dataMovies.map((movie) => {
     return (
       <div key={`${movie}:${movie.title}`}>

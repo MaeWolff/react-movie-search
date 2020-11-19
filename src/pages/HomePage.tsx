@@ -40,7 +40,6 @@ const SearchInput = styled(InputComponent)`
 `;
 
 export default function HomePage() {
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [search, setSearch] = useState("");
   const dataMovies = useMovieSearch({ search: search });
 

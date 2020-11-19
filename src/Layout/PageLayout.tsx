@@ -10,7 +10,7 @@ const LayoutContainer = styled.div`
   flex-direction: column;
 `;
 
-const Main = styled.div`
+const Main = styled.main`
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -19,11 +19,12 @@ const Main = styled.div`
 
 type PageLayoutProps = {
   children: ReactNode;
+  className?: string;
 };
 
-export default function PageLayout({ children }: PageLayoutProps) {
+export default function PageLayout({ children, className }: PageLayoutProps) {
   return (
-    <LayoutContainer>
+    <LayoutContainer className={className}>
       <Header />
 
       <Main>{children}</Main>

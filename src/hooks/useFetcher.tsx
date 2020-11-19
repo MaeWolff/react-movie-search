@@ -15,14 +15,18 @@ function useFetcher({ ROUTE, optionnal }: fetcherProps) {
     async function getDataMovies() {
       await axios
         .get(`${ROUTE}?api_key=${APIKEY}${optionnal}`)
-        .then((response) => response.data.results ? setDataResultsMovies(response.data.results) : setDataMovies(response.data))
+        .then((response) =>
+          response.data.results
+            ? setDataResultsMovies(response.data.results)
+            : setDataMovies(response.data)
+        )
         .catch((error) => console.log(error));
     }
 
     getDataMovies();
-  }, [ROUTE]);
+  }, [ROUTE, optionnal]);
 
-  return dataMovies.length ? dataMovies : dataResultsMovies ;
+  return dataMovies.length ? dataMovies : dataResultsMovies;
 }
 
 export default useFetcher;

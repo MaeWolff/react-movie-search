@@ -6,7 +6,6 @@ import LogoutSVG from "../assets/LogoutSVG";
 const HeaderContainer = styled.header`
   z-index: 6;
   position: sticky;
-  width: 100vw;
   top: 0;
   display: flex;
   flex-direction: row;

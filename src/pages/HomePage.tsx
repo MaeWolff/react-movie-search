@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from "react";
-import axios from "axios";
+import React, { useState } from "react";
 import styled from "styled-components";
 import PageLayout from "../Layout/PageLayout";
 import device from "../theme/device";
 import { InputComponent, MoviesCard } from "../Component/index";
+import useMovies from "../hooks/useMovies";
 
 const Heading = styled.div`
   margin-top: 4em;
@@ -29,26 +29,13 @@ const SearchInput = styled(InputComponent)`
 `;
 
 export default function HomePage() {
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [search, setSearch] = useState("");
-  const [dataMovies, setDataMovies] = useState<any[]>([]);
-  const APIKEY = "94f4de38164eb56347167c727bb8cde3";
-
-  useEffect(() => {
-    async function getDataMovies() {
-      await axios
-        .get(
-          `https://api.themoviedb.org/3/search/movie?api_key=${APIKEY}&query=${search}`
-        )
-        .then((response) => setDataMovies(response.data.results))
-        .catch((error) => console.log(error));
-    }
-
-    getDataMovies();
-  }, [search]);
+  const dataMovies = useMovies({ search: search });
 
   const renderMovies = dataMovies.map((movie) => {
     return (
-      <div key={`${movie}:${movie.title}`}>
+      <div key={`${movie}:${movie.id}`}>
         <MoviesCard
           id={movie.id}
           title={movie.title}

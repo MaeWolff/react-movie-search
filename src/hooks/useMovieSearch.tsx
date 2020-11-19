@@ -6,7 +6,7 @@ type useMoviesProps = {
   search: string;
 };
 
-function useMovies({ search }: useMoviesProps) {
+function useMovieSearch({ search }: useMoviesProps) {
   const [dataMovies, setDataMovies] = useState<any[]>([]);
 
   useEffect(() => {
@@ -25,4 +25,4 @@ function useMovies({ search }: useMoviesProps) {
   return dataMovies;
 }
 
-export default useMovies;
+export default useMovieSearch;

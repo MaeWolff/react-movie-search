@@ -5,21 +5,21 @@ import device from "../theme/device";
 import { InputComponent, MoviesCard } from "../Component/index";
 import useMovieSearch from "../hooks/useMovieSearch";
 import BackgroundImg from "../background.png";
-import debounce from 'debounce'
+import debounce from "debounce";
 
 const HeroSection = styled.div`
   width: 100%;
   background-image: url(${BackgroundImg});
   background-position: center;
   background-repeat: no-repeat;
-  height: 66vh;
+  height: 55vh;
   display: flex;
   align-items: center;
   flex-direction: column;
 `;
 
 const Heading = styled.div`
-  margin-top: 10em;
+  margin-top: 5em;
   font-weight: 900;
 
   h1 {
@@ -38,6 +38,10 @@ const SearchInput = styled(InputComponent)`
 
   @media ${device.laptop} {
     max-width: 40em;
+
+    input {
+      height: 3.5em;
+    }
   }
 `;
 
@@ -53,19 +57,16 @@ export default function HomePage() {
   const [search, setSearch] = useState("");
   const dataMovies = useMovieSearch({ search: search });
 
-  
-
-  
-  const renderMovies = dataMovies.map((movie) => {  
-    let options = { year: "numeric", month: "long", day: "numeric"};
-    let releaseDate = new Date(movie.release_date)
+  const renderMovies = dataMovies.map((movie) => {
+    let options = { year: "numeric", month: "long", day: "numeric" };
+    let releaseDate = new Date(movie.release_date);
     return (
       <div key={`${movie}:${movie.id}`}>
         <MoviesCard
           id={movie.id}
           title={movie.title}
           poster={movie.poster_path}
-          release={releaseDate.toLocaleString('fr-FR', options)}
+          release={releaseDate.toLocaleString("fr-FR", options)}
         />
       </div>
     );
@@ -83,16 +84,23 @@ export default function HomePage() {
           type="text"
           id="search"
           placeholder="Entrez le nom d'un film (ex: Spider-Man)"
-          handleChange={debounce((e) => e.target.value.length >= 3? setSearch((search) => e.target.value): setSearch((search) => ''), 300)}
+          handleChange={debounce(
+            (e) =>
+              e.target.value.length >= 3
+                ? setSearch((search) => e.target.value)
+                : setSearch((search) => ""),
+            300
+          )}
         />
       </HeroSection>
-      
-      {search ?
+
+      {search ? (
         <MoviesCardContainer>{renderMovies}</MoviesCardContainer>
-        :<div>
+      ) : (
+        <div>
           <p>Nouveautés</p>
         </div>
-      }
+      )}
     </PageLayout>
   );
 }

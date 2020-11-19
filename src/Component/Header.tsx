@@ -1,6 +1,7 @@
-import React from "react";
-import { Link, NavLink } from "react-router-dom";
+import React, { useEffect } from "react";
+import { Link, NavLink, useHistory } from "react-router-dom";
 import styled from "styled-components";
+import LogoutSVG from "../assets/LogoutSVG";
 
 const HeaderContainer = styled.header`
   z-index: 6;
@@ -32,6 +33,12 @@ const UserContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+
+  a {
+    &:hover {
+      color: ${(props) => props.theme.colors.primary};
+    }
+  }
 `;
 
 const UserIcon = styled.p`
@@ -41,12 +48,36 @@ const UserIcon = styled.p`
   width: 3em;
   height: 3em;
   background-color: ${(props) => props.theme.colors.primary};
-  margin-left: 1em;
+  margin: 0 1em;
   border-radius: 50%;
+`;
+
+const LogOut = styled.div`
+  cursor: pointer;
+
+  svg {
+    fill: ${(props) => props.theme.colors.grey};
+
+    &:hover {
+      fill: ${(props) => props.theme.colors.primary};
+    }
+  }
 `;
 
 const Header = () => {
   const username = localStorage?.getItem("username");
+  const history = useHistory();
+
+  function handleLogout() {
+    localStorage.setItem("username", "");
+    history.push("/");
+  }
+
+  useEffect(() => {
+    if (username?.length === 0) {
+      history.push("/");
+    }
+  }, [history, username]);
 
   return (
     <HeaderContainer>
@@ -60,6 +91,9 @@ const Header = () => {
         </LinksContainer>
         <p>{username}</p>
         <UserIcon>{username?.substr(0, 1)}</UserIcon>
+        <LogOut onClick={handleLogout}>
+          <LogoutSVG />
+        </LogOut>
       </UserContainer>
     </HeaderContainer>
   );

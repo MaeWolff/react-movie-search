@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import styled, { css } from "styled-components";
 import { Button, InputComponent } from "../Component/index";
@@ -59,6 +59,12 @@ export default function LoginPage() {
       history.push("/home");
     }
   }
+
+  useEffect(() => {
+    if (user !== null && user?.length > 0) {
+      history.push("/home");
+    }
+  }, [history, user]);
 
   return (
     <Layout>

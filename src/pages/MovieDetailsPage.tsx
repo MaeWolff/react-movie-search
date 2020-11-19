@@ -99,7 +99,7 @@ export default function MovieDetailsPage() {
     setMovieId(idPage);
   }, [idPage]);
 
-  const dataMovies = useMoviesId({ movieId: movieId });
+const dataMovies = useMoviesId({ movieId : movieId })
 
   return (
     <LayoutStyled>

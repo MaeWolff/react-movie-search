@@ -3,7 +3,7 @@ import styled from "styled-components";
 import PageLayout from "../Layout/PageLayout";
 import device from "../theme/device";
 import { InputComponent, MoviesCard } from "../Component/index";
-import useMovies from "../hooks/useMovies";
+import useMovieSearch from "../hooks/useMovieSearch";
 import BackgroundImg from "../background.png";
 
 const HeroSection = styled.div`
@@ -42,7 +42,7 @@ const SearchInput = styled(InputComponent)`
 export default function HomePage() {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [search, setSearch] = useState("");
-  const dataMovies = useMovies({ search: search });
+  const dataMovies = useMovieSearch({ search: search });
 
   const renderMovies = dataMovies.map((movie) => {
     return (

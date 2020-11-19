@@ -6,6 +6,7 @@ export type MoviesDetailsPageProps = {};
 export default function MovieDetailsPage() {
   const idPage = window.location.pathname.substr(7);
   const [movieId, setMovieId] = useState("");
+
   const dataMovies = useMoviesId({ movieId: movieId });
 
   useEffect(() => {

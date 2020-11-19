@@ -4,22 +4,22 @@ import { APIKEY } from "./constant";
 
 type fetcherProps = {
   ROUTE: string;
-  query?: string;
+  optionnal?: string;
 };
 
-function useFetcher({ ROUTE, query }: fetcherProps) {
-  const [dataMovies, setDataMovies] = useState<any[]>([]);
+function useFetcher({ ROUTE, optionnal }: fetcherProps) {
+  const [dataMovies, setDataMovies] = useState<any>([]);
 
   useEffect(() => {
     async function getDataMovies() {
       await axios
-        .get(`${ROUTE}${APIKEY}${query && `?query=${query}`}`)
-        .then((response) => setDataMovies(response.data.results))
+        .get(`${ROUTE}?api_key=${APIKEY}${optionnal}`)
+        .then((response) => setDataMovies(response.data))
         .catch((error) => console.log(error));
     }
 
     getDataMovies();
-  }, [ROUTE, query]);
+  }, [ROUTE, optionnal]);
 
   return dataMovies;
 }

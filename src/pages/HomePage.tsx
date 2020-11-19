@@ -41,18 +41,28 @@ const SearchInput = styled(InputComponent)`
   }
 `;
 
+const MoviesCardContainer = styled.div`
+  width: 90%;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  flex-wrap: wrap;
+`;
+
 export default function HomePage() {
   const [search, setSearch] = useState("");
   const dataMovies = useMovieSearch({ search: search });
-
-  const renderMovies = dataMovies.map((movie) => {
+  
+  const renderMovies = dataMovies.map((movie) => {  
+    let options = { year: "numeric", month: "long", day: "numeric"};
+    let releaseDate = new Date(movie.release_date)
     return (
       <div key={`${movie}:${movie.id}`}>
         <MoviesCard
           id={movie.id}
           title={movie.title}
           poster={movie.poster_path}
-          release={movie.release_date}
+          release={releaseDate.toLocaleString('fr-FR', options)}
         />
       </div>
     );
@@ -70,11 +80,16 @@ export default function HomePage() {
           type="text"
           id="search"
           placeholder="Entrez le nom d'un film (ex: Spider-Man)"
-          handleChange={debounce((e) => e.target.value.length >= 3? setSearch((search) => e.target.value): null, 2000)}
+          handleChange={debounce((e) => e.target.value.length >= 3? setSearch((search) => e.target.value): setSearch((search) => ''), 300)}
         />
       </HeroSection>
-
-      <>{renderMovies}</>
+      
+      {search ?
+        <MoviesCardContainer>{renderMovies}</MoviesCardContainer>
+        :<div>
+          <p>Nouveautés</p>
+        </div>
+      }
     </PageLayout>
   );
 }

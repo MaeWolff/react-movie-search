@@ -7,10 +7,9 @@ import PageLayout from "../Layout/PageLayout";
 const ResumeContainer = styled.div`
   display: flex;
   flex-direction: column;
-  margin: 0 2em 0 2em;
 
   h1 {
-    font-size: 2em;
+    font-size: 3em;
     font-weight: bold;
   }
 
@@ -70,6 +69,28 @@ const Overview = styled.p`
   }
 `;
 
+const LayoutStyled = styled(PageLayout)`
+  main {
+    align-items: flex-start;
+    padding: 0 2em;
+  }
+`;
+
+const CategoryDetails = styled.div`
+  margin-top: 2em;
+  width: fit-content;
+  padding: 0.5em 1em;
+  border: 1px solid ${(props) => props.theme.colors.primary};
+  border-radius: 8px;
+  text-align: start;
+`;
+
+const CategoryTitle = styled.p`
+  color: ${(props) => props.theme.colors.primary};
+  font-weight: bold;
+  margin-bottom: 0.5em;
+`;
+
 export default function MovieDetailsPage() {
   const idPage = window.location.pathname.substr(7);
   const [movieId, setMovieId] = useState("");
@@ -83,12 +104,12 @@ export default function MovieDetailsPage() {
   console.log(dataMovies);
 
   return (
-    <PageLayout>
+    <LayoutStyled>
       <img
         style={{
           background: "red",
           width: "100%",
-          height: "20em",
+          height: "30em",
           objectFit: "cover",
         }}
         src={`https://image.tmdb.org/t/p/w300/${dataMovies.backdrop_path}`}
@@ -128,6 +149,49 @@ export default function MovieDetailsPage() {
           <Overview>{dataMovies.overview}</Overview>
         </OverviewContainer>
       </ResumeContainer>
-    </PageLayout>
+
+      <CategoryDetails>
+        <CategoryTitle>Production details</CategoryTitle>
+        {dataMovies.production_companies && (
+          <p>
+            <StyledSpan>Company :</StyledSpan>{" "}
+            {dataMovies.production_companies[0].name}
+          </p>
+        )}
+        <p>
+          <StyledSpan>Budget :</StyledSpan>&nbsp;
+          {dataMovies.budget
+            ? dataMovies.budget.toLocaleString("en-US", {
+                style: "currency",
+                currency: "USD",
+              })
+            : `Budget non disponible`}
+        </p>
+      </CategoryDetails>
+
+      <CategoryDetails>
+        <CategoryTitle>Statistics</CategoryTitle>
+        {dataMovies.vote_average && (
+          <p>
+            <StyledSpan>Note :</StyledSpan>&nbsp;
+            {dataMovies.vote_average} / 10
+          </p>
+        )}
+        <p>
+          <StyledSpan>Revenue :</StyledSpan>&nbsp;
+          {dataMovies.revenue
+            ? dataMovies.revenue.toLocaleString("en-US", {
+                style: "currency",
+                currency: "USD",
+              })
+            : `Revenue non disponible`}
+        </p>
+        {dataMovies.vote_count && (
+          <p>
+            <StyledSpan>Vote count :</StyledSpan> {dataMovies.vote_count}
+          </p>
+        )}
+      </CategoryDetails>
+    </LayoutStyled>
   );
 }

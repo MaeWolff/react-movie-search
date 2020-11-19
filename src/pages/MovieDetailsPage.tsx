@@ -91,7 +91,7 @@ export default function MovieDetailsPage() {
           height: "20em",
           objectFit: "cover",
         }}
-        src={`https://image.tmdb.org/t/p/w300/${dataMovies.poster_path}`}
+        src={`https://image.tmdb.org/t/p/w300/${dataMovies.backdrop_path}`}
         alt="movie poster"
       />
       <ResumeContainer>
@@ -106,11 +106,21 @@ export default function MovieDetailsPage() {
             <p>
               <StyledSpan>Durée :</StyledSpan> {dataMovies.runtime} minutes
             </p>
-            {/* <p>Genre : {dataMovies.genres[1].name}</p> */}
+            {dataMovies.genres && (
+              <p>
+                <StyledSpan>Durée :</StyledSpan>
+                &nbsp;{dataMovies.genres[0].name}
+              </p>
+            )}
           </FlexColumn>
-          <a href={dataMovies.homepage} target="_blank" rel="noreferrer">
-            <Button label="Voir le site" />
-          </a>
+
+          {dataMovies.homepage ? (
+            <a href={dataMovies.homepage} target="_blank" rel="noreferrer">
+              <Button label="Voir le site" />
+            </a>
+          ) : (
+            <p>Pas de lien disponible</p>
+          )}
         </FlexRow>
         <OverviewContainer>
           <StyledTitle>Synopsis et détails</StyledTitle>

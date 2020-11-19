@@ -5,6 +5,7 @@ import device from "../theme/device";
 import { InputComponent, MoviesCard } from "../Component/index";
 import useMovies from "../hooks/useMovies";
 import BackgroundImg from "../background.png";
+import debounce from 'debounce'
 
 const HeroSection = styled.div`
   width: 100%;
@@ -69,7 +70,7 @@ export default function HomePage() {
           type="text"
           id="search"
           placeholder="Entrez le nom d'un film (ex: Spider-Man)"
-          handleChange={(e) => setSearch((search) => e.target.value)}
+          handleChange={debounce((e) => e.target.value.length >= 3? setSearch((search) => e.target.value): null, 2000)}
         />
       </HeroSection>
 

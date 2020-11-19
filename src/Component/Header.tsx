@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { Link, NavLink, useHistory } from "react-router-dom";
 import styled from "styled-components";
+import LogoutSVG from "../assets/LogoutSVG";
 
 const HeaderContainer = styled.header`
   z-index: 6;
@@ -51,11 +52,15 @@ const UserIcon = styled.p`
   border-radius: 50%;
 `;
 
-const LogOut = styled.p`
+const LogOut = styled.div`
   cursor: pointer;
 
-  &:hover {
-    color: ${(props) => props.theme.colors.primary};
+  svg {
+    fill: ${(props) => props.theme.colors.grey};
+
+    &:hover {
+      fill: ${(props) => props.theme.colors.primary};
+    }
   }
 `;
 
@@ -86,7 +91,9 @@ const Header = () => {
         </LinksContainer>
         <p>{username}</p>
         <UserIcon>{username?.substr(0, 1)}</UserIcon>
-        <LogOut onClick={handleLogout}>Se déconnecter</LogOut>
+        <LogOut onClick={handleLogout}>
+          <LogoutSVG />
+        </LogOut>
       </UserContainer>
     </HeaderContainer>
   );

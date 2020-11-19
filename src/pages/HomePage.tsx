@@ -70,7 +70,7 @@ export default function HomePage() {
           type="text"
           id="search"
           placeholder="Entrez le nom d'un film (ex: Spider-Man)"
-          handleChange={debounce((e) => setSearch((search) => e.target.value), 2000)}
+          handleChange={debounce((e) => e.target.value.length >= 3? setSearch((search) => e.target.value): null, 2000)}
         />
       </HeroSection>
 

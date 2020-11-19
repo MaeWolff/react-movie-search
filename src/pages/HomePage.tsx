@@ -11,6 +11,7 @@ const HeroSection = styled.div`
   width: 100%;
   background-image: url(${BackgroundImg});
   background-position: center;
+  background-repeat: no-repeat;
   height: 66vh;
   display: flex;
   align-items: center;

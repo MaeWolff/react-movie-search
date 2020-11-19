@@ -9,16 +9,12 @@ type fetcherProps = {
 
 function useFetcher({ ROUTE, optionnal }: fetcherProps) {
   const [dataResultsMovies, setDataResultsMovies] = useState<any[]>([]);
-  const [dataMovies, setDataMovies] = useState<any>([]);
 
   useEffect(() => {
     async function getDataMovies() {
       await axios
         .get(`${ROUTE}?api_key=${APIKEY}${optionnal}`)
-        .then((response) =>
-          response.data.results
-            ? setDataResultsMovies(response.data.results)
-            : setDataMovies(response.data)
+        .then((response) => setDataResultsMovies(response.data.results)
         )
         .catch((error) => console.log(error));
     }
@@ -26,7 +22,7 @@ function useFetcher({ ROUTE, optionnal }: fetcherProps) {
     getDataMovies();
   }, [ROUTE, optionnal]);
 
-  return dataMovies.length ? dataMovies : dataResultsMovies;
+  return dataResultsMovies;
 }
 
 export default useFetcher;

@@ -1,26 +1,14 @@
-import { useEffect, useState } from "react";
-import axios from "axios";
-import { APIKEY } from "./constant";
+import useFetcher from "./useFetcher";
 
-type useMoviesProps = {
+interface IMoviesSearch {
   search: string;
-};
+}
 
-function useMovieSearch({ search }: useMoviesProps) {
-  const [dataMovies, setDataMovies] = useState<any[]>([]);
-
-  useEffect(() => {
-    async function getDataMovies() {
-      await axios
-        .get(
-          `https://api.themoviedb.org/3/search/movie?api_key=${APIKEY}&query=${search}`
-        )
-        .then((response) => setDataMovies(response.data.results))
-        .catch((error) => console.log(error));
-    }
-
-    getDataMovies();
-  }, [search]);
+function useMovieSearch({ search }: IMoviesSearch) {
+  const dataMovies = useFetcher({
+    ROUTE: `https://api.themoviedb.org/3/search/movie`,
+    optionnal : `&query=${search}`
+  });
 
   return dataMovies;
 }

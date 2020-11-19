@@ -52,6 +52,9 @@ const MoviesCardContainer = styled.div`
 export default function HomePage() {
   const [search, setSearch] = useState("");
   const dataMovies = useMovieSearch({ search: search });
+
+  
+
   
   const renderMovies = dataMovies.map((movie) => {  
     let options = { year: "numeric", month: "long", day: "numeric"};

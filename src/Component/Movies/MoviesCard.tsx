@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 const CardContainer = styled.div`
-  width: 280px;
+  width: 17.5em;
   margin: 0.8em;
   transition: all 0.2s ease;
   :hover{
@@ -11,8 +11,8 @@ const CardContainer = styled.div`
   }
   
   img{
-    width: 250px;
-    height: 380px;
+    width: 15.625em;
+    height: 23.75em;
   }
 `;
 

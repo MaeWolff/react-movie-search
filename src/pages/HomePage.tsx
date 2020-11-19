@@ -4,9 +4,20 @@ import PageLayout from "../Layout/PageLayout";
 import device from "../theme/device";
 import { InputComponent, MoviesCard } from "../Component/index";
 import useMovies from "../hooks/useMovies";
+import BackgroundImg from "../background.png";
+
+const HeroSection = styled.div`
+  width: 100%;
+  background-image: url(${BackgroundImg});
+  background-position: center;
+  height: 66vh;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+`;
 
 const Heading = styled.div`
-  margin-top: 4em;
+  margin-top: 10em;
   font-weight: 900;
 
   h1 {
@@ -48,16 +59,19 @@ export default function HomePage() {
 
   return (
     <PageLayout>
-      <Heading>
-        <h1>KATANA</h1>
-        <p>Retrouvez dès maintenant les details de tout vos films préférés</p>
-      </Heading>
-      <SearchInput
-        type="text"
-        id="search"
-        placeholder="Entrez le nom d'un film (ex: Spider-Man)"
-        handleChange={(e) => setSearch((search) => e.target.value)}
-      />
+      <HeroSection>
+        <Heading>
+          <h1>KATANA</h1>
+          <p>Retrouvez dès maintenant les details de tout vos films préférés</p>
+        </Heading>
+
+        <SearchInput
+          type="text"
+          id="search"
+          placeholder="Entrez le nom d'un film (ex: Spider-Man)"
+          handleChange={(e) => setSearch((search) => e.target.value)}
+        />
+      </HeroSection>
 
       <>{renderMovies}</>
     </PageLayout>

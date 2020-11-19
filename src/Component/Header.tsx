@@ -3,11 +3,15 @@ import { Link, NavLink } from "react-router-dom";
 import styled from "styled-components";
 
 const HeaderContainer = styled.header`
+  position: fixed;
+  width: 95%;
   display: flex;
   flex-direction: row;
   padding: 1em 2em;
   justify-content: space-between;
   align-items: center;
+  backdrop-filter: blur(6em);
+  background-color: rgba(29, 27, 27, 0.4);
 `;
 
 const LinksContainer = styled.div`

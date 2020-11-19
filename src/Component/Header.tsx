@@ -3,6 +3,7 @@ import { Link, NavLink } from "react-router-dom";
 import styled from "styled-components";
 
 const HeaderContainer = styled.header`
+  z-index: 6;
   position: fixed;
   width: 95%;
   display: flex;

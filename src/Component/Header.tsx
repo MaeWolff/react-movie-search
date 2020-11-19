@@ -4,8 +4,9 @@ import styled from "styled-components";
 
 const HeaderContainer = styled.header`
   z-index: 6;
-  position: fixed;
-  width: 95%;
+  position: sticky;
+  width: 100vw;
+  top: 0;
   display: flex;
   flex-direction: row;
   padding: 1em 2em;

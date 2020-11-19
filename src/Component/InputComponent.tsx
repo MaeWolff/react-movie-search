@@ -57,7 +57,7 @@ export default function InputMolecule({
         required
         name={id}
         placeholder={placeholder}
-        onChange={debounce(handleChange, 1000)}
+        onChange={debounce(handleChange, 2000)}
       ></InputStyled>
     </InputWrapper>
   );

@@ -101,8 +101,6 @@ export default function MovieDetailsPage() {
 
   const dataMovies = useMoviesId({ movieId: movieId });
 
-  console.log(dataMovies);
-
   return (
     <LayoutStyled>
       <img

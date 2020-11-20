@@ -45,16 +45,25 @@ const SearchInput = styled(InputComponent)`
   }
 `;
 
-const MoviesCardLayout = styled.div`
+const MoviesListLayout = styled.div`
   width: 100%;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   margin-bottom: 5em;
 `
 
-const MoviesCardContainer = styled.div`
+const MoviesListContainer = styled.div`
   width: 90%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+`
+
+const MoviesCardContainer = styled.div<{fullWidth?: boolean}>`
+  width: ${(props) => props.fullWidth ? '100%' : '90%'};
   display: flex;
   align-items: flex-start;
   justify-content: center;
@@ -62,7 +71,7 @@ const MoviesCardContainer = styled.div`
 `;
 
 const CategoriesTitle = styled.h3`
-    margin: 0 0 0.5em 3em;
+    margin: 0 0 0.5em 0;
     font-size: 2rem;
     color: ${(props) => props.theme.colors.primary};
     @media ${device.laptop} {
@@ -113,23 +122,28 @@ export default function HomePage() {
       </HeroSection>
 
       {search ? (
-        <MoviesCardLayout>
+        <MoviesListLayout>
           <MoviesCardContainer>{renderMovies}</MoviesCardContainer>
-        </MoviesCardLayout>
+        </MoviesListLayout>
       ) : (
         <>
-          <CategoriesTitle>Popular</CategoriesTitle>
-          <MoviesCardLayout>
-            <MoviesCardContainer>
-                <MoviesPopular/>
-            </MoviesCardContainer>
-          </MoviesCardLayout>
-          <CategoriesTitle>Up Coming</CategoriesTitle>
-          <MoviesCardLayout>
-            <MoviesCardContainer>
-                <MoviesUpComing/>
-            </MoviesCardContainer>
-          </MoviesCardLayout>
+          <MoviesListLayout>
+            <MoviesListContainer>
+              <CategoriesTitle>Popular</CategoriesTitle>
+                <MoviesCardContainer fullWidth>
+                  <MoviesPopular/>
+                </MoviesCardContainer>
+            </MoviesListContainer>
+          </MoviesListLayout>
+          
+          <MoviesListLayout>
+            <MoviesListContainer>
+            <CategoriesTitle>Up Coming</CategoriesTitle>
+              <MoviesCardContainer fullWidth>
+                  <MoviesUpComing/>
+              </MoviesCardContainer>
+            </MoviesListContainer>
+          </MoviesListLayout>
         </>
       )}
     </PageLayout>

@@ -86,7 +86,7 @@ const Header = () => {
 
       <UserContainer>
         <LinksContainer>
-          <NavLink to="/">Ma Liste</NavLink>
+          <NavLink to="/">My list</NavLink>
         </LinksContainer>
         <p>{username}</p>
         <UserIcon>{username?.substr(0, 1)}</UserIcon>

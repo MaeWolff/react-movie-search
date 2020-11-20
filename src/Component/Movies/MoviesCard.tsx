@@ -6,11 +6,11 @@ const CardContainer = styled.div`
   width: 17.5em;
   margin: 0.8em;
   transition: all 0.2s ease;
-  :hover{
-    transform: scale(1.05)
+  :hover {
+    transform: scale(1.05);
   }
-  
-  img{
+
+  img {
     width: 15.625em;
     height: 23.75em;
     border-radius: 8px;
@@ -29,7 +29,6 @@ type MoviesCardProps = {
   release: string;
   id: string;
 };
-
 
 export default function MoviesCard({
   id,

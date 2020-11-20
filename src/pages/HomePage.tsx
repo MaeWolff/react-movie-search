@@ -66,11 +66,11 @@ const MoviesListContainer = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  
+
   @media ${device.laptop} {
     align-items: flex-start;
-    }
-`
+  }
+`;
 
 const MoviesCardContainer = styled.div<{ fullWidth?: boolean }>`
   width: ${(props) => (props.fullWidth ? "100%" : "90%")};
@@ -132,7 +132,7 @@ export default function HomePage() {
         <SearchInput
           type="text"
           id="search"
-          placeholder="Enter the name of a movie (ex: Spider-Man))"
+          placeholder="Enter the name of a movie (ex: Spider-Man)"
           handleChange={debounce(
             (e) =>
               e.target.value.length >= 3

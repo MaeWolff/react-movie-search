@@ -86,7 +86,7 @@ const CategoriesTitle = styled.h3`
   }
 `;
 
-const SearchTitle = styled.p`
+const SearchTitle = styled.h3`
   font-size: 2rem;
   color: ${(props) => props.theme.colors.grey};
 
@@ -134,7 +134,7 @@ export default function HomePage() {
               e.target.value.length >= 3
                 ? setSearch((search) => e.target.value)
                 : setSearch((search) => ""),
-            300
+            500
           )}
         />
         <SearchTitle>

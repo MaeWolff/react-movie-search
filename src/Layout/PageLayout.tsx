@@ -1,7 +1,7 @@
 import React, { ReactNode } from "react";
 import styled from "styled-components";
 
-import { Header } from "../Component/index";
+import { Header, Footer } from "../Component/index";
 
 const LayoutContainer = styled.div`
   width: 100%;
@@ -28,6 +28,8 @@ export default function PageLayout({ children, className }: PageLayoutProps) {
       <Header />
 
       <Main>{children}</Main>
+
+      <Footer />
     </LayoutContainer>
   );
 }

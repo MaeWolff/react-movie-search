@@ -119,15 +119,15 @@ const dataMovies = useMoviesId({ movieId : movieId })
             <h1>{dataMovies.title}</h1>
             <h2>{dataMovies.tagline}</h2>
             <p>
-              <StyledSpan>Data de sortie :</StyledSpan>{" "}
+              <StyledSpan>Release date :</StyledSpan>{" "}
               {dataMovies.release_date}
             </p>
             <p>
-              <StyledSpan>Durée :</StyledSpan> {dataMovies.runtime} minutes
+              <StyledSpan>Duration :</StyledSpan> {dataMovies.runtime} minutes
             </p>
             {dataMovies.genres && (
               <p>
-                <StyledSpan>Durée :</StyledSpan>
+                <StyledSpan>Genre :</StyledSpan>
                 &nbsp;{dataMovies.genres[0].name}
               </p>
             )}
@@ -135,15 +135,15 @@ const dataMovies = useMoviesId({ movieId : movieId })
 
           {dataMovies.homepage ? (
             <a href={dataMovies.homepage} target="_blank" rel="noreferrer">
-              <Button label="Voir le site" />
+              <Button label="See the website" />
             </a>
           ) : (
-            <p>Pas de lien disponible</p>
+            <p>No link available</p>
           )}
         </FlexRow>
         <OverviewContainer>
-          <StyledTitle>Synopsis et détails</StyledTitle>
-          {dataMovies.adult && <p>Film pour adulte</p>}
+          <StyledTitle>Synopsis and details</StyledTitle>
+          {dataMovies.adult && <p>Adult movie</p>}
           <Overview>{dataMovies.overview}</Overview>
         </OverviewContainer>
       </ResumeContainer>
@@ -163,7 +163,7 @@ const dataMovies = useMoviesId({ movieId : movieId })
                 style: "currency",
                 currency: "USD",
               })
-            : `Budget non disponible`}
+            : `Budget not available`}
         </p>
       </CategoryDetails>
 
@@ -176,13 +176,13 @@ const dataMovies = useMoviesId({ movieId : movieId })
           </p>
         )}
         <p>
-          <StyledSpan>Revenue :</StyledSpan>&nbsp;
+          <StyledSpan>Income :</StyledSpan>&nbsp;
           {dataMovies.revenue
             ? dataMovies.revenue.toLocaleString("en-US", {
                 style: "currency",
                 currency: "USD",
               })
-            : `Revenue non disponible`}
+            : `Income not available`}
         </p>
         {dataMovies.vote_count && (
           <p>

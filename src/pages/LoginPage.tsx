@@ -54,7 +54,7 @@ export default function LoginPage() {
 
     if (user?.length === 0) {
       setErrorMessage(true);
-      setErrorStatusMessage("Veuillez entrez votre pseudo");
+      setErrorStatusMessage("Please enter your username");
     } else {
       history.push("/home");
     }
@@ -75,10 +75,10 @@ export default function LoginPage() {
 
       <FormCard>
         <InputComponent
-          label="Inscris ton pseudo ici"
+          label="Enter your username here"
           id="username"
           type="text"
-          placeholder="Bogoss54 "
+          placeholder="BastienCalou4Ever "
           handleChange={(e) => setUsername((username) => e.target.value)}
         />
 
@@ -88,7 +88,7 @@ export default function LoginPage() {
           </p>
         )}
 
-        <Button handleClick={handleConnexion} label="Se connecter" />
+        <Button handleClick={handleConnexion} label="Log in" />
       </FormCard>
     </Layout>
   );

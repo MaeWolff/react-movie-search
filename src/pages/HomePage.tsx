@@ -87,7 +87,7 @@ export default function HomePage() {
           id={movie.id}
           title={movie.title}
           poster={movie.poster_path}
-          release={releaseDate.toLocaleString("fr-FR", options)}
+          release={releaseDate.toLocaleString("en-US", options)}
         />
       </div>
     );
@@ -102,7 +102,7 @@ export default function HomePage() {
           id={movie.id}
           title={movie.title}
           poster={movie.poster_path}
-          release={releaseDate.toLocaleString("fr-FR", options)}
+          release={releaseDate.toLocaleString("en-US", options)}
         />
       </div>
     );
@@ -117,7 +117,7 @@ export default function HomePage() {
           id={movie.id}
           title={movie.title}
           poster={movie.poster_path}
-          release={releaseDate.toLocaleString("fr-FR", options)}
+          release={releaseDate.toLocaleString("en-US", options)}
         />
       </div>
     );
@@ -128,13 +128,13 @@ export default function HomePage() {
       <HeroSection>
         <Heading>
           <h1>KATANA</h1>
-          <p>Retrouvez dès maintenant les details de tout vos films préférés</p>
+          <p>Find now the details of all your favorite movies</p>
         </Heading>
 
         <SearchInput
           type="text"
           id="search"
-          placeholder="Entrez le nom d'un film (ex: Spider-Man)"
+          placeholder="Enter the name of a movie (ex: Spider-Man))"
           handleChange={debounce(
             (e) =>
               e.target.value.length >= 3

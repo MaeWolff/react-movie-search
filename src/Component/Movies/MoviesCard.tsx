@@ -36,9 +36,13 @@ export default function MoviesCard({
   poster,
   release,
 }: MoviesCardProps) {
+  const idPage = window.location.pathname.substr(1,5); 
+
+  
+
   return (
     <CardContainer>
-      <Link to={`movie/${id}`}>
+      <Link to={idPage === 'movie' ? `${id}` :`movie/${id}`}>
         <img
           src={`https://image.tmdb.org/t/p/w300/${poster}`}
           alt="movie poster"

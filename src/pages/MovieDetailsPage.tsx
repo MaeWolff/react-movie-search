@@ -134,6 +134,30 @@ const InfoProductionMovie = styled.div`
   }
 `;
 
+const UpComingContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  margin-top: 5em;
+
+  h5 {
+    font-size: 2.5rem;
+    margin-bottom: 0.5em;
+    color: ${(props) => props.theme.colors.primary};
+
+    @media ${device.laptop} {
+      align-self: flex-start;
+  }
+  }
+`;
+
+const UpComingWrapper = styled.div`
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: flex-start;
+`;
+
 export default function MovieDetailsPage() {
   const idPage = window.location.pathname.substr(7);
   const [movieId, setMovieId] = useState("");

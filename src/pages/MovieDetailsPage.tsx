@@ -144,15 +144,6 @@ export default function MovieDetailsPage() {
 
   const dataMovies = useMoviesId({ movieId: movieId });
 
-  // function handleFavoris(idMovie: string | void) {
-  //   const oldData = JSON.parse(localStorage.getItem("favoris") || "[]");
-  //   let isExist = oldData.indexOf(idMovie);
-  //   if (isExist === -1) {
-  //     oldData.push(idMovie);
-  //     localStorage.setItem("favoris", JSON.stringify(oldData));
-  //   }
-  // }
-
   return (
     <LayoutStyled>
       <HeadTag title="Movie details" />

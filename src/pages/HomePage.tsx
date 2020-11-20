@@ -3,11 +3,10 @@ import styled from "styled-components";
 import PageLayout from "../Layout/PageLayout";
 import device from "../theme/device";
 import useMovieSearch from "../hooks/useMovieSearch";
-import usePopular from "../hooks/usePopular";
 import useUpComing from "../hooks/useUpComing";
 import BackgroundImg from "../background.png";
 import debounce from "debounce";
-import { InputComponent, MoviesCard, HeadTag } from "../Component/index";
+import { InputComponent, MoviesCard, MoviesPopular, MoviesUpComing, HeadTag } from "../Component/index";
 
 const HeroSection = styled.div`
   width: 100%;
@@ -75,40 +74,8 @@ const CategoriesTitle = styled.h3`
 export default function HomePage() {
   const [search, setSearch] = useState("");
   const dataMovies = useMovieSearch({ search: search });
-  const dataPopularMovies = usePopular();
-  const dataUpComingMovies = useUpComing();
 
   const renderMovies = dataMovies.map((movie) => {
-    let options = { year: "numeric", month: "long", day: "numeric" };
-    let releaseDate = new Date(movie.release_date);
-    return (
-      <div key={`${movie}:${movie.id}`}>
-        <MoviesCard
-          id={movie.id}
-          title={movie.title}
-          poster={movie.poster_path}
-          release={releaseDate.toLocaleString("en-US", options)}
-        />
-      </div>
-    );
-  });
-  
-  const renderPouplarMovies = dataPopularMovies.map((movie) => {
-    let options = { year: "numeric", month: "long", day: "numeric" };
-    let releaseDate = new Date(movie.release_date);
-    return (
-      <div key={`${movie}:${movie.id}`}>
-        <MoviesCard
-          id={movie.id}
-          title={movie.title}
-          poster={movie.poster_path}
-          release={releaseDate.toLocaleString("en-US", options)}
-        />
-      </div>
-    );
-  });
-
-  const renderUpComingMovies = dataUpComingMovies.map((movie) => {
     let options = { year: "numeric", month: "long", day: "numeric" };
     let releaseDate = new Date(movie.release_date);
     return (
@@ -155,13 +122,13 @@ export default function HomePage() {
           <CategoriesTitle>Popular</CategoriesTitle>
           <MoviesCardLayout>
             <MoviesCardContainer>
-                {renderPouplarMovies}
+                <MoviesPopular/>
             </MoviesCardContainer>
           </MoviesCardLayout>
           <CategoriesTitle>Up Coming</CategoriesTitle>
           <MoviesCardLayout>
             <MoviesCardContainer>
-                {renderUpComingMovies}
+                <MoviesUpComing/>
             </MoviesCardContainer>
           </MoviesCardLayout>
         </>

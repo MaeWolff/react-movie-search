@@ -101,12 +101,20 @@ export default function MovieDetailsPage() {
 
   const dataMovies = useMoviesId({ movieId: movieId });
 
+  function handleFavoris(idMovie: string | void) {
+    const oldData = JSON.parse(localStorage.getItem("favoris") || "[]");
+    let isExist = oldData.indexOf(idMovie);
+    if (isExist === -1) {
+      oldData.push(idMovie);
+      localStorage.setItem("favoris", JSON.stringify(oldData));
+    }
+  }
+
   return (
     <LayoutStyled>
       <HeadTag title="Movie details" />
       <img
         style={{
-          background: "red",
           width: "100%",
           height: "30em",
           objectFit: "cover",
@@ -120,8 +128,7 @@ export default function MovieDetailsPage() {
             <h1>{dataMovies.title}</h1>
             <h2>{dataMovies.tagline}</h2>
             <p>
-              <StyledSpan>Release date :</StyledSpan>{" "}
-              {dataMovies.release_date}
+              <StyledSpan>Release date :</StyledSpan> {dataMovies.release_date}
             </p>
             <p>
               <StyledSpan>Duration :</StyledSpan> {dataMovies.runtime} minutes

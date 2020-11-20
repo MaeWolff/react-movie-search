@@ -5,6 +5,7 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import LoginPage from "./pages/LoginPage";
 import HomePage from "./pages/HomePage";
 import MovieDetailsPage from "./pages/MovieDetailsPage";
+import MyListPage from "./pages/MyListPage";
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
           <Route exact path="/" component={LoginPage} />
           <Route exact path="/home" component={HomePage} />
           <Route exact path="/movie/:id" component={MovieDetailsPage} />
+          <Route exact path="/mylist" component={MyListPage} />
         </Switch>
       </Router>
     </div>

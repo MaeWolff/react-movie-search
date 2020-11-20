@@ -93,7 +93,7 @@ const CategoryDetails = styled.div`
   margin-top: 2em;
   width: fit-content;
   padding: 0.5em 1em;
-  border: 1px solid ${(props) => props.theme.colors.primary};
+  border: 1px solid #33363a;
   border-radius: 8px;
   text-align: start;
 `;

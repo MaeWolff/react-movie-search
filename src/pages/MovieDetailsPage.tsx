@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import useMoviesId from "../hooks/useMoviesId";
 import styled from "styled-components";
-import { Button } from "../Component/index";
+import { Button, HeadTag } from "../Component/index";
 import PageLayout from "../Layout/PageLayout";
 
 const ResumeContainer = styled.div`
@@ -99,10 +99,11 @@ export default function MovieDetailsPage() {
     setMovieId(idPage);
   }, [idPage]);
 
-const dataMovies = useMoviesId({ movieId : movieId })
+  const dataMovies = useMoviesId({ movieId: movieId });
 
   return (
     <LayoutStyled>
+      <HeadTag title="Movie details" />
       <img
         style={{
           background: "red",

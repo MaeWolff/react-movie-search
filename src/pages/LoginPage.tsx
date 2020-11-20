@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import styled, { css } from "styled-components";
-import { Button, InputComponent } from "../Component/index";
+import { Button, InputComponent, HeadTag } from "../Component/index";
 
 const FlexCenter = css`
   display: flex;
@@ -68,6 +68,7 @@ export default function LoginPage() {
 
   return (
     <Layout>
+      <HeadTag title="Login" />
       <LogoContainer>
         <Logo>KATANA</Logo>
         <span>movies searching</span>

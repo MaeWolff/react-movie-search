@@ -2,12 +2,12 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import PageLayout from "../Layout/PageLayout";
 import device from "../theme/device";
-import { InputComponent, MoviesCard } from "../Component/index";
 import useMovieSearch from "../hooks/useMovieSearch";
 import usePopular from "../hooks/usePopular";
 import useUpComing from "../hooks/useUpComing";
 import BackgroundImg from "../background.png";
 import debounce from "debounce";
+import { InputComponent, MoviesCard, HeadTag } from "../Component/index";
 
 const HeroSection = styled.div`
   width: 100%;
@@ -125,6 +125,7 @@ export default function HomePage() {
 
   return (
     <PageLayout>
+      <HeadTag title="Homepage" />
       <HeroSection>
         <Heading>
           <h1>KATANA</h1>

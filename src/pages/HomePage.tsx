@@ -137,9 +137,12 @@ export default function HomePage() {
             500
           )}
         />
-        <SearchTitle>
-          Results for <span>"{search}"</span>
-        </SearchTitle>
+
+        {search.length > 0 && (
+          <SearchTitle>
+            Results for <span>"{search}"</span>
+          </SearchTitle>
+        )}
       </HeroSection>
 
       {search ? (

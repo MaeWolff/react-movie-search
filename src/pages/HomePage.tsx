@@ -65,8 +65,12 @@ const MoviesListContainer = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: flex-start;
-`;
+  align-items: center;
+  
+  @media ${device.laptop} {
+    align-items: flex-start;
+    }
+`
 
 const MoviesCardContainer = styled.div<{ fullWidth?: boolean }>`
   width: ${(props) => (props.fullWidth ? "100%" : "90%")};
@@ -77,7 +81,7 @@ const MoviesCardContainer = styled.div<{ fullWidth?: boolean }>`
 `;
 
 const CategoriesTitle = styled.h3`
-  margin: 0 0 0.5em 0;
+  margin-bottom: 0.5em;
   font-size: 2rem;
   color: ${(props) => props.theme.colors.primary};
 

@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { Link, NavLink, useHistory } from "react-router-dom";
 import styled from "styled-components";
 import LogoutSVG from "../assets/LogoutSVG";
+import device from "../theme/device";
 
 const HeaderContainer = styled.header`
   z-index: 6;
@@ -19,6 +20,11 @@ const HeaderContainer = styled.header`
 const LinksContainer = styled.div`
   a {
     margin-right: 2em;
+    display: none;
+
+    @media ${device.tablet} {
+      display: block;
+    }
   }
 `;
 

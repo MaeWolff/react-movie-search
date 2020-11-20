@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import axios from "axios";
 import { APIKEY } from "../hooks/constant";
 import PageLayout from "../Layout/PageLayout";
@@ -24,23 +24,23 @@ export default function MyListPage() {
     console.log(dataList);
   }
 
-  useEffect(() => {
-    for (let index = 0; index < favorisList?.length; index++) {
-      function getMoviesId() {
-        axios
-          .get(
-            `https://api.themoviedb.org/3/movie/${favorisList[index]}?api_key=${APIKEY}`
-          )
-          .then((response) => setDataMovies(response.data))
-          .catch((error) => console.log(error));
-      }
+  // useEffect(() => {
+  //   for (let index = 0; index < favorisList?.length; index++) {
+  //     function getMoviesId() {
+  //       axios
+  //         .get(
+  //           `https://api.themoviedb.org/3/movie/${favorisList[index]}?api_key=${APIKEY}`
+  //         )
+  //         .then((response) => setDataMovies(response.data))
+  //         .catch((error) => console.log(error));
+  //     }
 
-      getMoviesId();
-      dataList.push(dataMovies);
-    }
+  //     getMoviesId();
+  //     dataList.push(dataMovies);
+  //   }
 
-    console.log(dataList);
-  }, []);
+  //   console.log(dataList);
+  // }, []);
 
   const render = dataList.map((movie, index) => {
     return (

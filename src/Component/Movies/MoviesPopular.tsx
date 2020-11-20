@@ -1,9 +1,9 @@
 import React from 'react'
-import usePopular from "../../hooks/usePopular";
+import useMoviesPopular from "../../hooks/useMoviesPopular";
 import { MoviesCard } from "../../Component/index";
 
 export default function MoviesPopular() {
-  const dataPopularMovies = usePopular();
+  const dataPopularMovies = useMoviesPopular();
 
   const renderPouplarMovies = dataPopularMovies.map((movie) => {
     let options = { year: "numeric", month: "long", day: "numeric" };

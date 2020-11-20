@@ -1,9 +1,9 @@
 import React from 'react'
-import useUpComing from "../../hooks/useUpComing";
+import useMoviesUpComing from "../../hooks/useMoviesUpComing";
 import { MoviesCard } from "../../Component/index";
 
 export default function MoviesUpComing() {
-  const dataPopularMovies = useUpComing();
+  const dataPopularMovies = useMoviesUpComing();
 
   const renderUpComingMovies = dataPopularMovies.map((movie) => {
     let options = { year: "numeric", month: "long", day: "numeric" };

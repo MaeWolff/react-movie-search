@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import useMoviesId from "../hooks/useMoviesId";
 import styled from "styled-components";
-import { Button, HeadTag } from "../Component/index";
+import { Button, HeadTag, MoviesUpComing } from "../Component/index";
 import PageLayout from "../Layout/PageLayout";
 import device from "../theme/device";
 
@@ -134,6 +134,24 @@ const InfoProductionMovie = styled.div`
   }
 `;
 
+const UpComingContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  margin-top: 4em;
+
+  h5 {
+    font-size: 2rem;
+    color: ${(props) => props.theme.colors.primary};
+  }
+`;
+
+const UpComingWrapper = styled.div`
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+`;
+
 export default function MovieDetailsPage() {
   const idPage = window.location.pathname.substr(7);
   const [movieId, setMovieId] = useState("");
@@ -241,6 +259,13 @@ export default function MovieDetailsPage() {
           </ButtonsContainer>
         </DetailsMovie>
       </ResumeContainer>
+
+      <UpComingContainer>
+        <h5>Up coming</h5>
+        <UpComingWrapper>
+          <MoviesUpComing />
+        </UpComingWrapper>
+      </UpComingContainer>
     </LayoutStyled>
   );
 }

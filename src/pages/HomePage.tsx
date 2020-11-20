@@ -4,6 +4,8 @@ import PageLayout from "../Layout/PageLayout";
 import device from "../theme/device";
 import { InputComponent, MoviesCard } from "../Component/index";
 import useMovieSearch from "../hooks/useMovieSearch";
+import usePopular from "../hooks/usePopular";
+import useUpComing from "../hooks/useUpComing";
 import BackgroundImg from "../background.png";
 import debounce from "debounce";
 
@@ -45,6 +47,14 @@ const SearchInput = styled(InputComponent)`
   }
 `;
 
+const MoviesCardLayout = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 5em;
+`
+
 const MoviesCardContainer = styled.div`
   width: 90%;
   display: flex;
@@ -53,11 +63,52 @@ const MoviesCardContainer = styled.div`
   flex-wrap: wrap;
 `;
 
+const CategoriesTitle = styled.h3`
+    margin: 0 0 0.5em 3em;
+    font-size: 2rem;
+    color: ${(props) => props.theme.colors.primary};
+    @media ${device.laptop} {
+      font-size: 3rem;
+    }
+`
+
 export default function HomePage() {
   const [search, setSearch] = useState("");
   const dataMovies = useMovieSearch({ search: search });
+  const dataPopularMovies = usePopular();
+  const dataUpComingMovies = useUpComing();
 
   const renderMovies = dataMovies.map((movie) => {
+    let options = { year: "numeric", month: "long", day: "numeric" };
+    let releaseDate = new Date(movie.release_date);
+    return (
+      <div key={`${movie}:${movie.id}`}>
+        <MoviesCard
+          id={movie.id}
+          title={movie.title}
+          poster={movie.poster_path}
+          release={releaseDate.toLocaleString("fr-FR", options)}
+        />
+      </div>
+    );
+  });
+  
+  const renderPouplarMovies = dataPopularMovies.map((movie) => {
+    let options = { year: "numeric", month: "long", day: "numeric" };
+    let releaseDate = new Date(movie.release_date);
+    return (
+      <div key={`${movie}:${movie.id}`}>
+        <MoviesCard
+          id={movie.id}
+          title={movie.title}
+          poster={movie.poster_path}
+          release={releaseDate.toLocaleString("fr-FR", options)}
+        />
+      </div>
+    );
+  });
+
+  const renderUpComingMovies = dataUpComingMovies.map((movie) => {
     let options = { year: "numeric", month: "long", day: "numeric" };
     let releaseDate = new Date(movie.release_date);
     return (
@@ -95,11 +146,24 @@ export default function HomePage() {
       </HeroSection>
 
       {search ? (
-        <MoviesCardContainer>{renderMovies}</MoviesCardContainer>
+        <MoviesCardLayout>
+          <MoviesCardContainer>{renderMovies}</MoviesCardContainer>
+        </MoviesCardLayout>
       ) : (
-        <div>
-          <p>Nouveautés</p>
-        </div>
+        <>
+          <CategoriesTitle>Popular</CategoriesTitle>
+          <MoviesCardLayout>
+            <MoviesCardContainer>
+                {renderPouplarMovies}
+            </MoviesCardContainer>
+          </MoviesCardLayout>
+          <CategoriesTitle>Up Coming</CategoriesTitle>
+          <MoviesCardLayout>
+            <MoviesCardContainer>
+                {renderUpComingMovies}
+            </MoviesCardContainer>
+          </MoviesCardLayout>
+        </>
       )}
     </PageLayout>
   );

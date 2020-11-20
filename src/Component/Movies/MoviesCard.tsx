@@ -39,7 +39,7 @@ export default function MoviesCard({
   const idPage = window.location.pathname.substr(1,5); 
   
   return (
-    <CardContainer>
+    <CardContainer onClick = { () => window.scrollTo(0,0)}>
       <Link to={idPage === 'movie' ? `${id}` :`movie/${id}`}>
         <img
           src={`https://image.tmdb.org/t/p/w300/${poster}`}

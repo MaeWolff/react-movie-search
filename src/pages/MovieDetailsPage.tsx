@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import useMoviesId from "../hooks/useMoviesId";
 import styled from "styled-components";
-import { Button, HeadTag } from "../Component/index";
+import { Button, HeadTag, MoviesUpComing  } from "../Component/index";
 import PageLayout from "../Layout/PageLayout";
 import device from "../theme/device";
 
@@ -265,6 +265,12 @@ export default function MovieDetailsPage() {
           </ButtonsContainer>
         </DetailsMovie>
       </ResumeContainer>
+      <UpComingContainer>	
+        <h5>Up coming</h5>	
+        <UpComingWrapper>	
+          <MoviesUpComing />	
+        </UpComingWrapper>	
+      </UpComingContainer>
     </LayoutStyled>
   );
 }

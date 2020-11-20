@@ -37,9 +37,7 @@ export default function MoviesCard({
   release,
 }: MoviesCardProps) {
   const idPage = window.location.pathname.substr(1,5); 
-
   
-
   return (
     <CardContainer>
       <Link to={idPage === 'movie' ? `${id}` :`movie/${id}`}>

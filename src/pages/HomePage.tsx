@@ -3,7 +3,6 @@ import styled from "styled-components";
 import PageLayout from "../Layout/PageLayout";
 import device from "../theme/device";
 import useMovieSearch from "../hooks/useMovieSearch";
-import useUpComing from "../hooks/useMoviesUpComing";
 import BackgroundImg from "../background.png";
 import debounce from "debounce";
 import { InputComponent, MoviesCard, MoviesPopular, MoviesUpComing, HeadTag } from "../Component/index";

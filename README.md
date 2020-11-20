@@ -10,3 +10,7 @@ Clone the repo and run the server with `yarn start` or visit website [here](http
 - TypeScript
 - styled-components
 (and axios to fetch data)
+
+### Teams
+* [Nathan STAMPFLI](https://github.com/Nstampfli) 🐲
+* [Maëva WOLFF](https://github.com/MaevaWolff) 🐉

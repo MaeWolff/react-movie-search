@@ -5,7 +5,13 @@ import device from "../theme/device";
 import useMovieSearch from "../hooks/useMovieSearch";
 import BackgroundImg from "../background.png";
 import debounce from "debounce";
-import { InputComponent, MoviesCard, MoviesPopular, MoviesUpComing, HeadTag } from "../Component/index";
+import {
+  InputComponent,
+  MoviesCard,
+  MoviesPopular,
+  MoviesUpComing,
+  HeadTag,
+} from "../Component/index";
 
 const HeroSection = styled.div`
   width: 100%;
@@ -38,10 +44,10 @@ const SearchInput = styled(InputComponent)`
 
   @media ${device.laptop} {
     max-width: 40em;
+  }
 
-    input {
-      height: 3.5em;
-    }
+  input {
+    height: 3.5em;
   }
 `;
 
@@ -52,7 +58,7 @@ const MoviesListLayout = styled.div`
   justify-content: center;
   align-items: center;
   margin-bottom: 5em;
-`
+`;
 
 const MoviesListContainer = styled.div`
   width: 90%;
@@ -60,10 +66,10 @@ const MoviesListContainer = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: flex-start;
-`
+`;
 
-const MoviesCardContainer = styled.div<{fullWidth?: boolean}>`
-  width: ${(props) => props.fullWidth ? '100%' : '90%'};
+const MoviesCardContainer = styled.div<{ fullWidth?: boolean }>`
+  width: ${(props) => (props.fullWidth ? "100%" : "90%")};
   display: flex;
   align-items: flex-start;
   justify-content: center;
@@ -71,13 +77,24 @@ const MoviesCardContainer = styled.div<{fullWidth?: boolean}>`
 `;
 
 const CategoriesTitle = styled.h3`
-    margin: 0 0 0.5em 0;
-    font-size: 2rem;
+  margin: 0 0 0.5em 0;
+  font-size: 2rem;
+  color: ${(props) => props.theme.colors.primary};
+
+  @media ${device.laptop} {
+    font-size: 3rem;
+  }
+`;
+
+const SearchTitle = styled.p`
+  font-size: 2rem;
+  color: ${(props) => props.theme.colors.grey};
+
+  span {
     color: ${(props) => props.theme.colors.primary};
-    @media ${device.laptop} {
-      font-size: 3rem;
-    }
-`
+    font-size: 1.5rem;
+  }
+`;
 
 export default function HomePage() {
   const [search, setSearch] = useState("");
@@ -86,6 +103,7 @@ export default function HomePage() {
   const renderMovies = dataMovies.map((movie) => {
     let options = { year: "numeric", month: "long", day: "numeric" };
     let releaseDate = new Date(movie.release_date);
+
     return (
       <div key={`${movie}:${movie.id}`}>
         <MoviesCard
@@ -119,6 +137,9 @@ export default function HomePage() {
             300
           )}
         />
+        <SearchTitle>
+          Results for <span>"{search}"</span>
+        </SearchTitle>
       </HeroSection>
 
       {search ? (
@@ -130,17 +151,17 @@ export default function HomePage() {
           <MoviesListLayout>
             <MoviesListContainer>
               <CategoriesTitle>Popular</CategoriesTitle>
-                <MoviesCardContainer fullWidth>
-                  <MoviesPopular/>
-                </MoviesCardContainer>
+              <MoviesCardContainer fullWidth>
+                <MoviesPopular />
+              </MoviesCardContainer>
             </MoviesListContainer>
           </MoviesListLayout>
-          
+
           <MoviesListLayout>
             <MoviesListContainer>
-            <CategoriesTitle>Up Coming</CategoriesTitle>
+              <CategoriesTitle>Up Coming</CategoriesTitle>
               <MoviesCardContainer fullWidth>
-                  <MoviesUpComing/>
+                <MoviesUpComing />
               </MoviesCardContainer>
             </MoviesListContainer>
           </MoviesListLayout>

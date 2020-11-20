@@ -94,9 +94,6 @@ const CategoryTitle = styled.p`
 export default function MovieDetailsPage() {
   const idPage = window.location.pathname.substr(7);
   const [movieId, setMovieId] = useState("");
-  // const arrayLists = localStorage.getItem("favoris")
-  //   ? localStorage.getItem("favoris")
-  //   : [];
 
   useEffect(() => {
     setMovieId(idPage);
